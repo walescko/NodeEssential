@@ -33,3 +33,19 @@ function objects03(){
     console.log(person.hello())
 }
 objects03()
+
+class Person01{
+    constructor() {
+        this.name = "Walescko!"
+    }
+    hello(){
+        return "Hello People!"
+    }
+}
+function objects04(){
+    let person = new Person01()
+    console.log(person)
+    console.log(person.name)
+    console.log(person.hello())
+}
+objects04()
