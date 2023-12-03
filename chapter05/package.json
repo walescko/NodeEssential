@@ -1,0 +1,19 @@
+{
+  "name": "chap05",
+  "version": "1.0.0",
+  "description": "exemples chapther 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "keywords": [
+    "Node"
+  ],
+  "author": "Walescko (apud RR Lecheta)",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
