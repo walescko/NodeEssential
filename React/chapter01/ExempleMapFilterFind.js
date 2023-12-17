@@ -1,8 +1,8 @@
 let books00 = [ "CSS3", "Javascript", "Python", "HTML", "Node", "React" ]
 const books03 = [
-    {title: "Construindo sites com HTML", author: "Mauricio Samy Silva"},
-    {title: "Web Scraping com Python", author: "Ryan Mitchell"},
-    {title: "CSS3", author: "Mauricio Samy Silva"}
+    {id: 1, title: "Construindo sites com HTML", author: "Mauricio Samy Silva"},
+    {id: 2, title: "Web Scraping com Python", author: "Ryan Mitchell"},
+    {id: 3, title: "CSS3", author: "Mauricio Samy Silva"}
 ]
 console.log(books00)
 console.log(books00.length)
@@ -23,7 +23,7 @@ console.log(books03)
 console.log(books04)
 console.log(books05)
 
-console.log("Sessaõ filter()")
+console.log("Sessão filter()")
 let book06 = books03.filter((book) => book.title === "CSS3")
 let book07 = books03.filter((book) => book.author === "Mauricio Samy Silva")
 let book08 = books03.filter((book)=> book.title.includes("com"))
@@ -33,3 +33,9 @@ console.log("Filter Mauricio Samy Silva")
 console.log(book07)
 console.log("Filter com")
 console.log(book08)
+
+console.log("Sessão find()")
+let book09 = books03.find((book) => book.id === 3)
+console.log(book09)
+console.log(book09.title)
+
