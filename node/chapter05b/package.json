@@ -1,0 +1,17 @@
+{
+  "name": "chapter05b",
+  "version": "1.0.0",
+  "description": "Exemples chapter 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "keywords": [
+    "book",
+    "node"
+  ],
+  "author": "Walescko apud Ricardo R Lecheta",
+  "license": "ISC"
+}
