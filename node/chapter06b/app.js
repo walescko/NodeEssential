@@ -8,8 +8,14 @@ function callback(request, response){
     response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"})
     if (path == '/test'){
         let people = []
-        let people01 = {'name':'Ricardo','surename':'Lecheta'}
-        let people02 = {'name': 'Linus', 'surname': 'Torvalds'}
+        let People = class{
+            constructor(name, surname) {
+                this.name = name,
+                    this.surname = surname
+            }
+        }
+        let people01 = new People("Ricardo","Lecheta")
+        let people02 = new People("Linus", "Torvalds")
 
         people.push(people01)
         people.push(people02)
