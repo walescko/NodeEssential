@@ -7,9 +7,11 @@ let connection = mysql.createConnection({
     database: 'livro'
 })
 
+connection.connect()
+
 let sql = "select id, nome, tipo from carro where tipo = '" + tipo + "'"
 connection.query(sql, function (error, results, fields){
-    
+
 })
 
 connection.end()
