@@ -10,3 +10,6 @@ UPDATE your_table SET id = @num := (@num+1);\
 ALTER TABLE your_table AUTO_INCREMENT =1;\
 
 \ 
+Na sessão 7.10 tive dificuldades com a conexão com o banco de dados, mas a solução encontrei no stackoverflow e funcionou, seque o link: https://stackoverflow.com/questions/51008807/nodejs-mysql-client-does-not-support-authentication-protocol \
+![img.png](img.png) \
+ \ 
