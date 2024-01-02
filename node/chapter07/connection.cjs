@@ -8,6 +8,6 @@
         database: 'livro'
     })
 
-// module.exports = connection
+module.exports = connection
 
-export default connection
+// export default connection
