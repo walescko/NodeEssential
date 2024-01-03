@@ -26,6 +26,9 @@ connection.query(sql, function (error, results, fields){
         let carro = carros[i]
         console.log(carro.id + ": " + carro.nome + ", " + carro.tipo)
     }
+
+    console.log("Consulta ao banco de dados com a função map via callback")
+    carros.map(c => console.log(c.id + ": " + c.nome + ", " + c.tipo))
 })
 
 connection.end()
