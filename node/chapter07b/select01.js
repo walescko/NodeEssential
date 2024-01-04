@@ -1,12 +1,4 @@
-let mysql = require('mysql')
-
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'livro',
-    password: 'Livro123#',
-    database: 'livro'
-})
-
+import connection from "./connection.cjs"
 
 connection.connect()
 
