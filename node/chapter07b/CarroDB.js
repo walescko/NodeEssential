@@ -13,30 +13,31 @@ class CarroDB {
     static getCarros(callback) {
         let connection = CarroDB.connect()
         let sql = "select * from carro"
-        let query = connection.query(sql, function (error, results, fields){
-            if (error) throw  error
+        let query = connection.query(sql, function (error, results, fields) {
+            if (error) throw error
             callback(results)
         })
         console.log(query.sql)
         connection.end()
     }
+
     static getCarroByTipo(tipo, callback) {
         let connection = CarroDB.connect()
         let sql = "selec id, nome, tipo from carro where tipo = '" + tipo + "'"
-        let query = connection.query(sql, function (error, results, fields){
-            if (error) throw  error
+        let query = connection.query(sql, function (error, results, fields) {
+            if (error) throw error
             callback(results)
         })
         console.log(query.sql)
         connection.end();
     }
 
-    static getCarroID(id, callback){
+    static getCarroID(id, callback) {
         let connection = CarroDB.connect()
         let sql = "select * from carro where id = ?"
-        let query = connection.query(sql, id, function (error, results, fields){
+        let query = connection.query(sql, id, function (error, results, fields) {
             if (error) throw error
-            if (results.length == 0){
+            if (results.length == 0) {
                 console.log("Nenhum carro encontrado")
                 return
             }
@@ -44,6 +45,53 @@ class CarroDB {
             callback(carro)
         })
         console.log(query.sql)
-        connection.end()S
+        connection.end()
+    }
+
+    static save(carro, callback) {
+        let connection = CarroDB.connect()
+        let sql = "insert into carro set ?"
+        let query = connection.query(sql, carro, function (error, results, fields) {
+            if (error) throw error
+            carro.id = results.insertId
+            callback(carro)
+        })
+        console.log(query.sql)
+        connection.end()
+    }
+
+    static update(carro, callback) {
+        let connection = CarroDB.connect()
+        let sql = "update carro set ? where id = ?"
+        let id = carro.id
+        let query = connection.query(sql, [carro, id], function (error, results, fields) {
+            if (error) throw error
+            callback(carro)
+        })
+        console.log(query.sql)
+        connection.end()
+    }
+
+    static delete(carro, callback) {
+        let connection = CarroDB.connect()
+        let sql = "delete from carro where id = ?"
+        let id = carro.id
+        let query = connection.query(sql, id, function (error, results, fields) {
+            if (error) throw error
+            callback(carro)
+        })
+        console.log(query.sql)
+        connection.end()
+    }
+
+    static deleteById(id, callback) {
+        let connection = CarroDB.connect()
+        let sql = "delete from carro where id = ?"
+        let query = connection.query(sql, id function (error, results, fields) {
+            if (error) throw error
+            callback(results.affectedRows)
+        })
+        console.log(query.sql)
+        connection.end()
     }
 }
