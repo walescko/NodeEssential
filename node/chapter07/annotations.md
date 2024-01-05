@@ -13,3 +13,4 @@ ALTER TABLE your_table AUTO_INCREMENT =1;\
 Na sessão 7.10 tive dificuldades com a conexão com o banco de dados, mas a solução encontrei no stackoverflow e funcionou, seque o link: https://stackoverflow.com/questions/51008807/nodejs-mysql-client-does-not-support-authentication-protocol \
 ![img.png](img.png) \
  \ 
+Depois e ver os exemplos do livro, experimentei em fazer um módulo para realizar a conexão ao banco de dados, para otimizar a leitura dos códigos e ter mais limpo os códigos. Só não entendi ainda porque usar a extensão "cjs" ao invés de apenas "js" para rodar no NODE, experimentei com o BUN e rodou sem problemas com a extensão "js".
