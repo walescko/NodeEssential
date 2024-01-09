@@ -2,13 +2,17 @@ let mysql = require('mysql')
 
 class CarroDB {
     static connect() {
-        let connection = mysql.createConnection({
+        var connection = mysql.createConnection({
             host: 'localhost',
             user: 'livro',
             password: "Livro123#",
             database: 'livro'
         })
+        connection.connect()
+        return connection
     }
+
+
 
     static getCarros(callback) {
         let connection = CarroDB.connect()

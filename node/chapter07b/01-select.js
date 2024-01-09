@@ -1,4 +1,5 @@
-const CarroDB = require('./CarroDB.js')
+import CarroDB from "./CarroDB.cjs"
+// const CarroDB = require('CarroDB.cjs')
 CarroDB.getCarros(function (carros){
     for (let i = 0; carros.length > i; i++){
         console.log(carros[i] + ": " + carros[i].nome)
