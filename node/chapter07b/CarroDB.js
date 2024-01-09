@@ -8,6 +8,8 @@ class CarroDB {
             password: "Livro123#",
             database: 'livro'
         })
+        connection.connect()
+        return connection
     }
 
     static getCarros(callback) {
