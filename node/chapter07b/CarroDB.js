@@ -1,4 +1,4 @@
-let mysql - require('mysql')
+let mysql = require('mysql')
 
 class CarroDB {
     static connect() {
@@ -87,7 +87,7 @@ class CarroDB {
     static deleteById(id, callback) {
         let connection = CarroDB.connect()
         let sql = "delete from carro where id = ?"
-        let query = connection.query(sql, id function (error, results, fields) {
+        let query = connection.query(sql, id, function (error, results, fields) {
             if (error) throw error
             callback(results.affectedRows)
         })
@@ -95,3 +95,4 @@ class CarroDB {
         connection.end()
     }
 }
+module.exports = CarroDB
