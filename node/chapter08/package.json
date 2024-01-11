@@ -1,0 +1,20 @@
+{
+  "name": "chapter08",
+  "version": "1.0.0",
+  "description": "webservices em node",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon app.cjs"
+  },
+  "keywords": [
+    "webservice",
+    "node"
+  ],
+  "author": "Walescko (apud R. R Lecheta)",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
