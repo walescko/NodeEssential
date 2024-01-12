@@ -25,9 +25,9 @@ class CarroDB {
         connection.end()
     }
 
-    static getCarroByTipo(tipo, callback) {
+    static getCarrosByTipo(tipo, callback) {
         let connection = CarroDB.connect()
-        let sql = "selec id, nome, tipo from carro where tipo = '" + tipo + "'"
+        let sql = "select id, nome, tipo from carro where tipo = '" + tipo + "'"
         let query = connection.query(sql, function (error, results, fields) {
             if (error) throw error
             callback(results)
@@ -100,4 +100,4 @@ class CarroDB {
     }
 }
 module.exports = CarroDB
-// export default CarroDB
+//export default CarroDB

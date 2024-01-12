@@ -1,9 +1,7 @@
-// import CarroDB from "./CarroDB.cjs"
-
+//import CarroDB from "./CarroDB.js"
+const CarroDB = require('./CarroDB.js')
 let http = require('http')
 let url = require('url')
-
-let CarroDB = require('./CarroDB.cjs')
 
 function getCarros(response, tipo){
     CarroDB.getCarrosByTipo(tipo, function (carros){
