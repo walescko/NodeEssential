@@ -1,0 +1,19 @@
+{
+  "name": "chapter09",
+  "version": "1.0.0",
+  "description": "Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon app.js"
+  },
+  "keywords": [
+    "express",
+    "framework"
+  ],
+  "author": "Walescko (apud R. R. Lecheta)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
