@@ -1,14 +1,16 @@
 let express = require('express')
 let app = express()
 
-app.get('/pessoa', function(req, res) {
-    let  nome = req.query.nome
-    let sobrenome = req.query.sobrenome
+app.get('/pessoa/:id', function(req, res) {
+    // let  nome = req.query.nome
+    // let sobrenome = req.query.sobrenome
     // res.json({nome: "Walescko", sobrenome: "Chimendes"})
-    res.status(200).type("text")
+    // res.status(200).type("text")
     // res.send("Hello World Express 2")
-    res.send(nome + " " + sobrenome)
+    // res.send(nome + " " + sobrenome)
     // res.json({msg: 'ops...'})
+    let id = req.params.id
+    res.send("Buscar a pessoa: " + id)
 })
 
 let server = app.listen(3000, function() {
