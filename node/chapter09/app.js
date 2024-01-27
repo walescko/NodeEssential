@@ -3,6 +3,7 @@ let app = express()
 
 let bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 app.get('/pessoa', function(req, res) {
     let  nome = req.query.nome
