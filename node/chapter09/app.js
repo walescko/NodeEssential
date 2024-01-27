@@ -20,7 +20,11 @@ app.get('/pessoa', function(req, res) {
 app.post('/pessoa', function (req, res){
     let nome = req.body.nome
     let sobrenome = req.body.sobrenome
-    res.send(nome + " " + sobrenome)
+    if(req.is("json")){
+        res.json({nome:nome, sobrenome:sobrenome})
+    } else{
+        res.type("text").send("Texto: " + nome + " " + sobrenome)
+    }
 })
 
 let server = app.listen(3000, function() {
