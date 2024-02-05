@@ -1,17 +1,17 @@
-let mysql = require('mariadb')
+let mysql = require('mysql')
 
 class CarroDB {
     static connect() {
-        let connection = mysql.createConnection({
+        var connection = mysql.createConnection({
             host: 'localhost',
             user: 'livro',
             password: "livro123",
-            database: 'livro',
+            database: 'livro'
         })
         connection.connect()
         return connection
     }
-
+//
     static getCarros(callback) {
         let connection = CarroDB.connect()
         let sql = "select * from carro"
@@ -25,11 +25,11 @@ class CarroDB {
 
     static getCarrosByTipo(tipo, callback) {
         let connection = CarroDB.connect()
-        let sql = "select id, nome, tipo from carro where tipo = " + tipo + "'"
-        let query = connection.query(sql, function (error, results, fields){
-            if (error) throw error;
+        let sql = "select id, nome, tipo from carro where tipo = '" + tipo + "'"
+        let query = connection.query(sql, function (error, results, fields) {
+            if (error) throw error
             callback(results)
-        });
+        })
         console.log(query.sql)
         connection.end();
     }
@@ -40,7 +40,7 @@ class CarroDB {
         let query = connection.query(sql, id, function (error, results, fields) {
             if (error) throw error
             if (results.length == 0) {
-                console.log("Nenhum carro encontrado, que pena.")
+                console.log("Nenhum carro encontrado")
                 return
             }
             let carro = results[0]
