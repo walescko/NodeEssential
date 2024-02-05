@@ -19,6 +19,20 @@ app.get('/carros/:tipo', function(req, res){
     })
 })
 
+app.post('/carros', function(req, res){
+    let carro = req.body
+    CarroDB.save(carro, function(carro){
+        res.json(carro)
+    })
+})
+
+app.put('/carros', function (req, res){
+    let carro = req.body
+    CarroDB.update(carro, function(carro){
+        res.json(carro)
+    })
+})
+
 let server = app.listen(3000, function(){
     let host = server.address().address
     let port = server.address().port
