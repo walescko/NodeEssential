@@ -1,11 +1,11 @@
-let mysql = require('mysql')
+let mysql = require('mariadb')
 
 class CarroDB {
     static connect() {
         let connection = mysql.createConnection({
             host: 'localhost',
             user: 'livro',
-            password: "Livro123#",
+            password: "livro123",
             database: 'livro'
         })
         connection.connect()
@@ -98,4 +98,4 @@ class CarroDB {
     }
 }
 module.exports = CarroDB
-//export default CarroDB
+// export default CarroDB
