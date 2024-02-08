@@ -8,10 +8,21 @@ app.use(bodyParser.json())
 
 app.use('/api/carros', require('./routes/carros'))
 
+app.use('/teste_erro', function(req, res){
+    throw Error("ERRO NINJA")
+})
+
 app.use(function(res, req, next){
     res.status(404)
     res.json({err: "Error 404 - Não encontrato"})
 })
+
+app.use(function(err, req, res, next){
+    console.log(err.stack)
+    res.status(500)
+    res.json({erro: "Ocorreu um erro: "+ err.message})
+})
+
 app.get('/', function (req, res) {
     res.send("CARS API")
 })
