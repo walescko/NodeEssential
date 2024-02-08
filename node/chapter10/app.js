@@ -1,6 +1,6 @@
 let express = require('express')
 let app = express()
-const CarroDB = require('./CarroDB.cjs')
+const CarroDB = require('./model/CarroDB.cjs')
 let bodyParser = require('body-parser')
 app.get('/', function (req, res) {
     res.send("CARS API")
