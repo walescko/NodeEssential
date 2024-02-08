@@ -1,4 +1,4 @@
-import CarroDB from "./CarroDB.cjs"
+import CarroDB from "./model/CarroDB.cjs"
 
 let carro = { id:31, nome: "MY Car JABiraca", tipo: "jabiraca esportivo"}
 CarroDB.update(carro, function(carro){

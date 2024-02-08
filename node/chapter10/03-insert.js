@@ -1,4 +1,4 @@
-import CarroDB from "./CarroDB.cjs"
+import CarroDB from "./model/CarroDB.cjs"
 
 let carro = {nome: "My Car", tipo: "jabiraca"}
 CarroDB.save(carro, function (carro){
