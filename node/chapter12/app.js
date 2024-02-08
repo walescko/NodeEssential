@@ -7,6 +7,11 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.use('/api/carros', require('./routes/carros'))
+
+app.use(function(res, req, next){
+    res.status(404)
+    res.json({err: "Error 404 - Não encontrato"})
+})
 app.get('/', function (req, res) {
     res.send("CARS API")
 })
