@@ -1,4 +1,4 @@
-import CarroDB from "./CarroDB.cjs"
+import CarroDB from "./model/CarroDB.cjs"
 // const CarroDB = require('./CarroDB.cjs')
 let callback = function (carros){
     for (let i = 0; carros.length > i; i++){
