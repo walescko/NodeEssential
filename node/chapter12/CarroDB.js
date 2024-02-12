@@ -14,12 +14,13 @@ class CarroDB {
 
     static getCarros(callback) {
         let connection = CarroDB.connect()
-        let sql = "select * from carro"
+        let sql = "select * from carroXXX"
         let query = connection.query(sql, function (error, results, fields) {
-            if (error) throw error
+            if (error) {
+                throw error
+            }
             callback(results)
         })
-        console.log(query.sql)
         connection.end()
     }
 
