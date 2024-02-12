@@ -5,3 +5,4 @@ function teste(){
         console.log(JSON.stringify(carros))
     })
 }
+teste()
