@@ -1,4 +1,4 @@
-let mysql = require('mariadb')
+let mysql = require('mysql')
 
 class CarroDB {
     static connect() {
@@ -14,14 +14,6 @@ class CarroDB {
 
     static getCarros(callback) {
         let connection = CarroDB.connect()
-<<<<<<< HEAD
-        let sql = "select * from carro"
-        let query = connection.query(sql, function (error, results, fields) {
-            if (error) throw error
-            callback(results)
-        })
-        console.log(query.sql)
-=======
         let sql = "select * from carroXXX"
         let query = connection.query(sql, function (error, results, fields) {
             if (error) {
@@ -30,13 +22,13 @@ class CarroDB {
             }
             callback(null, results)
         })
->>>>>>> 58410bce71bbb9bc1121f45a07fe4ce8b03e01e6
+        console.log(query.sql)
         connection.end()
     }
 
     static getCarrosByTipo(tipo, callback) {
         let connection = CarroDB.connect()
-        let sql = "select id, nome, tipo from carro where tipo = " + tipo + "'"
+        let sql = "select id, nome, tipo from carro where tipo = " + tipo + "'";
         let query = connection.query(sql, function (error, results, fields){
             if (error) throw error;
             callback(results)
@@ -45,9 +37,9 @@ class CarroDB {
         connection.end();
     }
 
-    static getCarroID(id, callback) {
+    static getCarroId(id, callback) {
         let connection = CarroDB.connect()
-        let sql = "select * from carro where id = ?"
+        let sql = "select * from carro where id = ?";
         let query = connection.query(sql, id, function (error, results, fields) {
             if (error) throw error
             if (results.length == 0) {
@@ -74,7 +66,7 @@ class CarroDB {
     }
 
     static update(carro, callback) {
-        let connection = CarroDB.connect()
+        let  connection = CarroDB.connect()
         let sql = "update carro set ? where id = ?"
         let id = carro.id
         let query = connection.query(sql, [carro, id], function (error, results, fields) {

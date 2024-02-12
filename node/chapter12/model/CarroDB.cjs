@@ -2,22 +2,25 @@ let mysql = require('mysql')
 
 class CarroDB {
     static connect() {
-        var connection = mysql.createConnection({
+        let connection = mysql.createConnection({
             host: 'localhost',
             user: 'livro',
             password: "livro123",
-            database: 'livro'
+            database: 'livro',
         })
         connection.connect()
         return connection
     }
-//
+
     static getCarros(callback) {
         let connection = CarroDB.connect()
-        let sql = "select * from carro"
+        let sql = "select * from carroXXX"
         let query = connection.query(sql, function (error, results, fields) {
-            if (error) throw error
-            callback(results)
+            if (error) {
+                callback(error, null)
+                return
+            }
+            callback(null, results)
         })
         console.log(query.sql)
         connection.end()
@@ -25,22 +28,22 @@ class CarroDB {
 
     static getCarrosByTipo(tipo, callback) {
         let connection = CarroDB.connect()
-        let sql = "select id, nome, tipo from carro where tipo = '" + tipo + "'"
-        let query = connection.query(sql, function (error, results, fields) {
-            if (error) throw error
+        let sql = "select id, nome, tipo from carro where tipo = " + tipo + "'";
+        let query = connection.query(sql, function (error, results, fields){
+            if (error) throw error;
             callback(results)
-        })
+        });
         console.log(query.sql)
         connection.end();
     }
 
-    static getCarroID(id, callback) {
+    static getCarroId(id, callback) {
         let connection = CarroDB.connect()
-        let sql = "select * from carro where id = ?"
+        let sql = "select * from carro where id = ?";
         let query = connection.query(sql, id, function (error, results, fields) {
             if (error) throw error
             if (results.length == 0) {
-                console.log("Nenhum carro encontrado")
+                console.log("Nenhum carro encontrado, que pena.")
                 return
             }
             let carro = results[0]
@@ -63,7 +66,7 @@ class CarroDB {
     }
 
     static update(carro, callback) {
-        let connection = CarroDB.connect()
+        let  connection = CarroDB.connect()
         let sql = "update carro set ? where id = ?"
         let id = carro.id
         let query = connection.query(sql, [carro, id], function (error, results, fields) {
