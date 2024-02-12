@@ -2,29 +2,24 @@ let express = require('express')
 const router = express.Router()
 const CarroDB = require('../model/CarroDB.js')
 
-<<<<<<< HEAD
-router.get('/', function (req, res){
-    CarroDB.getCarros(function (carros){
-=======
-router.get('/', function (req, res, next){
+router.get('/carros', function (req, res, next){
     CarroDB.getCarros(function (error, carros){
         if (error) {
             console.log("Erro de SQL: " + error.message)
             return next(error)
         }
->>>>>>> 58410bce71bbb9bc1121f45a07fe4ce8b03e01e6
         res.json(carros)
     })
 })
 
-router.get('/:id(\\d_)', function(req, res){
+router.get('/carros/:id(\\d+)', function(req, res){
     let id = req.params.id
     CarroDB.getCarroById(id, function(carro){
         res.json(carro)
     })
 })
 
-router.delete('/:id(\\d+), ', function(req, res){
+router.delete('/carros/:id(\\d+), ', function(req, res){
     let id = req.params.id
     console.log("Deletar carro " + id)
     CarroDB.deleteById(id, function(affectedRows){
@@ -32,14 +27,14 @@ router.delete('/:id(\\d+), ', function(req, res){
     })
 })
 
-router.get('/:tipo', function (req, res){
+router.get('/carros/:tipo', function (req, res){
     let tipo = req.params.tipo
     CarroDB.getCarrosByTipo(tipo, function (carros){
         res.json(carros)
     })
 })
 
-router.post('/', function (req, res ){
+router.post('/carros', function (req, res ){
     let carro = req.body
     CarroDB.save(carro, function (carro){
         res.json(carro)
