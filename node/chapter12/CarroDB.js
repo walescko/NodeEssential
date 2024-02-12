@@ -17,9 +17,10 @@ class CarroDB {
         let sql = "select * from carroXXX"
         let query = connection.query(sql, function (error, results, fields) {
             if (error) {
-                throw error
+                callback(error, null)
+                return
             }
-            callback(results)
+            callback(null, results)
         })
         connection.end()
     }
