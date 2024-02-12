@@ -15,6 +15,9 @@ Para configurar o Mysql no sistema consultei o seguinte endereço: https://www.d
  \
 Esteio - 31/12/2023\
 ************************\
-
+Depois de passar o Janeiro interio estudando o libro de NodeJS, devido a outros compromissos cheguei ao capítulo 13, dando trabalho. Mas já dominando um pouco melhor o MySQL.\
+Ainda nesse intervalo resolvi trocar o Ubuntu 23.10 pelo Big Linux, gostei dessa distribuição, mas travou e deu alguns problemas com o KDE personalidado do sistema que resolvi tentar o Manjaro, que por enquanto está funcionando bem com tudo que preciso.\
+\
+Esteio - 12/02/2024
  \
  
