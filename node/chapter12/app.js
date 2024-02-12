@@ -1,6 +1,6 @@
 let express = require('express')
 let app = express()
-const CarroDB = require('./CarroDB.cjs')
+const CarroDB = require('./model/CarroDB.js')
 let bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({extended: false}))
