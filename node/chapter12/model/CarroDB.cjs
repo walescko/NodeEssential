@@ -37,7 +37,7 @@ class CarroDB {
         connection.end();
     }
 
-    static getCarroId(id, callback) {
+    static getCarroById(id, callback) {
         let connection = CarroDB.connect()
         let sql = "select * from carro where id = ?";
         let query = connection.query(sql, id, function (error, results, fields) {

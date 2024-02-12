@@ -41,7 +41,7 @@ router.post('/carros', function (req, res ){
     })
 })
 
-router.put('/', function(req, res){
+router.put('/carros', function(req, res){
     let carro = req.body
     CarroDB.update(carro, function (carro){
         res.json({msg: 'Carro atualizado com sucesso.'})

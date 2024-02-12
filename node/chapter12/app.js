@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 })
 
 
-app.use('/api', require('.routes/carros'))
+app.use('/api', require('./routes/carros'))
 
 app.get('/teste_erro', function(req, res){
     throw Error('Erro Ninja')
