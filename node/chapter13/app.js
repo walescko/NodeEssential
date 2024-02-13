@@ -1,76 +1,40 @@
 let express = require('express')
 let app = express()
-const CarroDB = require('./model/CarroDB.js')
 let bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.use('/api/carros', require('./routes/carros'))
-
-app.use('/teste_erro', function(req, res){
-    throw Error("ERRO NINJA")
-})
-
-app.use(function(res, req, next){
-    let err = new Error('Não encotnrado')
-    res.status = 404
-    next(err)
-})
-
-app.use(function(err, req, res, next){
-    console.log(err.stack)
-    res.status(500)
-    res.json({erro: "Ocorreu um erro: " + err.message})
+app.use(function(req, res, next){
+    console.log('Time: ', Data.now())
 })
 
 app.get('/', function (req, res) {
     res.send("CARS API")
 })
 
-app.get('/carros', function (req, res){
-    CarroDB.getCarros(function(carros){
-        res.json(carros)
-    })
+
+app.use('/api', require('./routes/carros'))
+
+app.get('/teste_erro', function(req, res){
+    throw Error('Erro Ninja')
 })
 
-app.get('/carros/;id(\\d+)', function(req, res){
-    let id = req.params.id
-    CarroDB.getCarrosById(id, function(carro){
-        res.json(carro)
-    })
+app.use(function(req, res, next){
+    res.status(404)
+    res.json({err: "Não encontrado"})
 })
 
-app.delete('/carro/:id(\\d+)', function(req, res){
-    let id= req.params.id
-    console.log("dedletar carro " + id)
-    CarroDB.deleteById(id, function(affectedRows){
-        res.json({msg: 'Carro deletado com sucesso.'})
-    })
+app.use(function logErrors(err,req, res, next){
+    console.error(err.stack)
+    next(err)
 })
 
-app.get('/carros/:tipo', function(req, res){
-    let tipo = req.params.tipo
-    CarroDB.getCarrosByTipo(tipo, function(carros){
-        res.json(carros)
-    })
+app.use(function(err, req, res, next){
+    res.status(500)
+    res.json({erro: 'Erro na transação'})
 })
 
-app.post('/carros', function(req, res){
-    let carro = req.body
-    CarroDB.save(carro, function(carro){
-        res.json(carro)
-    })
-})
-
-app.put('/carros', function (req, res){
-    let carro = req.body
-    response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"})
-    CarroDB.update(carro, function(carro){
-        //res.json(carro)
-        res.json({msg: 'Carro atualizado com sucesso.'})
-    })
-})
 
 let server = app.listen(3000, function(){
     let host = server.address().address

@@ -5,7 +5,7 @@ class CarroDB {
         var connection = mysql.createConnection({
             host: 'localhost',
             user: 'livro',
-            password: "Livro123#",
+            password: "livro123",
             database: 'livro'
         })
         connection.connect()

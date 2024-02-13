@@ -1,52 +1,47 @@
-let express = require('express')
-const router = express.Router()
-const CarroDB = require('../model/CarroDB.js')
+let express = require('express');
+const router = express.Router();
+const CarroDB = require('../model/CarroDB');
+const exec = require('./utils');
 
-router.get('/', function (req, res, next){
-    CarroDB.getCarros(function (error, carros){
-        if (error) {
-            console.log("Erro de SQL: " + error.message)
-            return next(error)
-        }
-        res.json(carros)
-    })
-})
+// GET em /carros
+router.get('/carros', exec(async (req, res, next) => {
+    let carros = await CarroDB.getCarros();
+    res.json(carros);
+}));
 
-router.get('/:id(\\d_)', function(req, res){
-    let id = req.params.id
-    CarroDB.getCarroById(id, function(carro){
-        res.json(carro)
-    })
-})
+// GET em /carros/id
+router.get('/carros/:id(\\d+)', exec(async (req, res, next) => {
+    let id = req.params.id;
+    let carro = await CarroDB.getCarroById(id);
+    res.json(carro)
+}));
 
-router.delete('/:id(\\d+), ', function(req, res){
-    let id = req.params.id
-    console.log("Deletar carro " + id)
-    CarroDB.deleteById(id, function(affectedRows){
-        res.json({msg: 'Carro deletado com sucesso.'})
-    })
-})
+// DELETE em /carros/id
+router.delete('/carros/:id(\\d+)', exec(async (req, res, next) => {
+    let id = req.params.id;
+    let affectedRows = await CarroDB.deleteById(id);
+    res.json({msg: affectedRows > 0 ? 'Carro deletado com sucesso.' : "Nenhum carro excluído."});
+}));
 
-router.get('/:tipo', function (req, res){
-    let tipo = req.params.tipo
-    CarroDB.getCarrosByTipo(tipo, function (carros){
-        res.json(carros)
-    })
-})
+// GET em /carros/xxx
+router.get('/carros/:tipo', exec(async (req, res, next) => {
+    let tipo = req.params.tipo;
+    let carros = await CarroDB.getCarrosByTipo(tipo);
+    res.json(carros);
+}));
 
-router.post('/', function (req, res ){
-    let carro = req.body
-    CarroDB.save(carro, function (carro){
-        res.json(carro)
-    })
-})
+// POST para salvar um carro
+router.post('/carros', exec(async (req, res, next) => {
+    // Carro enviado no formato JSON
+    let carro = await CarroDB.save(req.body);
+    res.json(carro);
+}));
 
-router.put('/', function(req, res){
-    let carro = req.body
-    CarroDB.update(carro, function (carro){
-        res.json({msg: 'Carro atualizado com sucesso.'})
-    })
-})
+// PUT para atualizar um carro
+router.put('/carros', exec(async (req, res, next) => {
+    // Carro enviado no formato JSON
+    let carro = await CarroDB.update(req.body);
+    res.json({msg: 'Carro atualizado com sucesso.'});
+}));
 
-module.exports = router
-
+module.exports = router;
