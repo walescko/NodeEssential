@@ -1,5 +1,5 @@
 import toStudy from "./utils.js";
-import {toPraise} from "./utils.js";
+import toPraise from "./utils.js";
 
 const btn1 = document.querySelector("#btn1")
 btn1.addEventListener('click', () => {toStudy("Vamos estudar React")})
