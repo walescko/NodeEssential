@@ -17,7 +17,7 @@ class App extends Component {
                 autor: "Ricardo R. Lecheta"
             },
             {
-                id: "978-7522-512-7",
+                id: "978-85-7522-512-7",
                 titulo: "Aprendendo Marginal Desing",
                 autor: "Kyle Mew"
             }
@@ -28,7 +28,7 @@ class App extends Component {
     <table className="tabela">
         <TabelaHead />
         <TabelaBody livros={this.state.livros}/>
-        <TabelaFoot />
+        <TabelaFoot qdeLivros={this.state.livros.length}/>
     </table>
   );
 }
