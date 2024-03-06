@@ -5,23 +5,18 @@ import TabelaFoot from "./components/TabelaFoot";
 
 class App extends Component {
     state = {
-        livros: [
-            {
-                id: "978-85-7522-632-2",
-                titulo: "CSS Grid Layout",
-                autor: "Maurício Samy Silva"
-            },
-            {
-                id: "978-85-7522-677-3",
-                titulo: "Node Essential",
-                autor: "Ricardo R. Lecheta"
-            },
-            {
-                id: "978-85-7522-512-7",
-                titulo: "Aprendendo Marginal Desing",
-                autor: "Kyle Mew"
-            }
-        ]
+        livros: []
+    };
+    componentDidMount() {
+        fetch("/api/livros.json")
+            .then(response => response.json())
+            .then(livros => this.setState({livros}))
+            .catch(function(error){
+                console.log("Erro de requisição")
+            })
+            .finally(function (){
+                console.log("Sempre retorna")
+            })
     }
     render(){
   return (
