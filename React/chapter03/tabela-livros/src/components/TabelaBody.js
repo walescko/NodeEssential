@@ -1,15 +1,15 @@
 import React from "react";
 
-const TabelaBody = () => (
+const TabelaBody = props => (
     <tbody>
-        <th>
-            <td>978-85-7522-632-2</td>
-            <td>CSS Frid Layout</td>
-            <td>Maurício Samy Silva</td>
-            <td>
-                <button className="botao remover">Remover</button>
-            </td>
-        </th>
+        {props.livros.map((livro, index)=> (
+            <tr key={livro.id}>
+                <td>{livro.id}</td>
+                <td>{livro.titulo}</td>
+                <td>{livro.autor}</td>
+                <td><button className="botao remover">Remover</button></td>
+            </tr>
+        ))}
     </tbody>
 );
 export default TabelaBody;
