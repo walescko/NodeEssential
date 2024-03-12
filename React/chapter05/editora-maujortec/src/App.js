@@ -1,15 +1,13 @@
 
 // import './App.css';
 import React from "react";
-import Logo from "./components/Logo.js";
-import Navegacao from "./components/Navegacao.js"
+import Topo from "./components/Topo.js"
 
 const App = () => {
   return (
-      <>
-        <Logo />
-        <Navegacao />
-      </>
+
+        <Topo />
+
   )
 }
 
